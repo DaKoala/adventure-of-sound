@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "sourceRoot": "./src/",
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "es2015",
+    "target": "es2015",
+    "allowJs": true,
+    "esModuleInterop": true,
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "final-project",
+  "version": "1.0.0",
+  "description": "My first p5 project",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "parcel ./src/index.html --open",
+    "build": "rm -rf dist && parcel build ./src/index.html --public-url='.' --no-source-maps",
+    "clean": "rm -rf node_modules"
+  },
+  "keywords": [],
+  "author": "Unknown",
+  "license": "MIT",
+  "dependencies": {
+    "ml5": "^0.4.3",
+    "p5": "^0.9.0"
+  },
+  "devDependencies": {
+    "@types/p5": "^0.9.0",
+    "parcel": "^1.12.3",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.7.2"
+  }
+}

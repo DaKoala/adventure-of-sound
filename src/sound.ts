@@ -38,12 +38,12 @@ class Sound {
   getVolume() {
     return this.audioIn.getLevel();
   }
-    
+
   getPitch() {
-    if (!this.modelReady) {
+    if (!this.modelReady || !this.pitchValue) {
       return null;
     }
-    return this.pitchValue;
+    return map(this.pitchValue, 0, 512, 0, 1);
   }
 }
 

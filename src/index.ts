@@ -2,6 +2,10 @@ import p5 from 'p5';
 import 'ml5';
 import sound from './Sound';
 import soundBox from './SoundBox';
+import track from './Track';
+import Obstacle from './Obstacle';
+
+const obs = new Obstacle(400, 400);
 
 function setup() {
   createCanvas(800, 600, WEBGL);
@@ -9,15 +13,15 @@ function setup() {
   sound.setup();
 }
 
-async function draw() {
+function draw() {
   background(0);
   camera(0, height * 2, height, 0, 0, 0, 0, 1, 0);
   const volume = sound.getVolume();
   const pitch = sound.getPitch();
+  track.draw();
   soundBox.draw();
-  fill(0, 255, 0);
-  noStroke();
-  plane(500, 2000);
+  obs.update();
+  obs.draw();
 }
 
 // p5.js requires `setup` and `draw` to be methods of global object

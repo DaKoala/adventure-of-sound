@@ -3,14 +3,57 @@ import soundBox from './SoundBox';
 import colorTheme from './ColorTheme';
 import { trackWidth, trackHeight } from './constants';
 
-const SPEED_LIMIT = 5;
+const SPEED_LIMIT = 9;
+const scoreEle = document.getElementById('score');
+const stageEle = document.getElementById('stage');
+const targetEle = document.getElementById('target');
+const obstacleEle = document.getElementById('obstacle');
+
+const targetScores: Record<number, number> = {
+  0: 50,
+  1: 110,
+  2: 180,
+  3: 260,
+  4: 350,
+  5: 450,
+  6: 560,
+  7: 680,
+  8: 810,
+  9: 950,
+  10: 1100,
+}
 
 class GameManager {
   box = soundBox;
+  score = 0;
   speed = 0;
+  targetScore = targetScores[this.speed];
   timeCounter = 0;
   obstacleCounter = 0;
   obstacles: Obstacle[] = [];
+
+  constructor() {
+    this.writeScore();
+    this.writeStage();
+    this.writeTargetScore();
+    this.writeObstacle();
+  }
+
+  writeScore() {
+    scoreEle.textContent = String(this.score);
+  }
+
+  writeStage() {
+    stageEle.textContent = String(this.speed + 1);
+  }
+
+  writeTargetScore() {
+    targetEle.textContent = String(this.targetScore);
+  }
+
+  writeObstacle() {
+    obstacleEle.textContent = String(5 - this.obstacleCounter % 5);
+  }
 
   generateObstacle() {
     const obstacle = new Obstacle(random(200, trackWidth), random(200, trackHeight));
@@ -38,19 +81,22 @@ class GameManager {
     const { holeWidth, holeHeight } = obstacle;
     const { width, height } = this.box;
     this.obstacleCounter += 1;
+    this.writeObstacle();
     const scorePercent = (width * height) / (holeWidth * holeHeight);
-    console.log(scorePercent);
-    if (this.obstacleCounter >= 5) {
+    this.score += Math.floor(scorePercent * 100);
+    this.writeScore();
+    if (this.obstacleCounter % 5 === 0) {
       this.increaseSpeed();
       colorTheme.updateColorTheme();
-      this.obstacleCounter = 0;
     }
-    console.log(colorTheme);
   }
 
   increaseSpeed() {
     if (this.speed < SPEED_LIMIT) {
       this.speed += 1;
+      this.targetScore = targetScores[this.speed];
+      this.writeStage();
+      this.writeTargetScore();
     }
   }
 
@@ -64,6 +110,7 @@ class GameManager {
   }
 
   draw() {
+    fill(255);
     this.drawObstacles();
   }
 }

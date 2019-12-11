@@ -3,10 +3,15 @@ import 'ml5';
 import sound from './Sound';
 import soundBox from './SoundBox';
 import track from './Track';
-import Obstacle from './Obstacle';
 import gameManager from './GameManager';
 
-const obs = new Obstacle(400, 400);
+enum State {
+  Start,
+  Game,
+  End,
+}
+
+let state = State.Start;
 
 function setup() {
   createCanvas(800, 600, WEBGL);

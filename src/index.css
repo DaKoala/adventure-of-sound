@@ -1,0 +1,35 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+.info {
+  box-sizing: border-box;
+  width: 800px;
+  height: 50px;
+  padding: 0 20px;
+  background-color: black;
+  font-size: 20px;
+  color: white;
+  border-bottom: 1px solid white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.desc {
+  margin-right: 8px;
+}
+.desc--stage {
+  color: #e15554;
+}
+.desc--score {
+  color: #e1bc29;
+}
+.desc--target {
+  color: #4d9de0;
+}
+.desc--obstacle {
+  color: #3bb273;
+}
+#stage, #score, #target, #obstacle {
+  margin-right: 32px;
+}

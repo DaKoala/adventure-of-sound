@@ -4,17 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My First p5 App</title>
+  <link href="./index.css" rel="stylesheet">
   <script>
     // alert('This website requires permission to use your microphone');
   </script>
 </head>
 <body>
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-  }
-</style>
+  <div class="info">
+    <div>
+      <span class="desc desc--stage">STAGE</span>
+      <span id="stage">1</span>
+    </div>
+    <div>
+      <span class="desc desc--score">SCORE</span>
+      <span id="score">0</span>
+    </div>
+    <div>
+      <span class="desc desc--target">TARGET SCORE</span>
+      <span id="target">0</span>
+    </div>
+    <div>
+      <span class="desc desc--obstacle">OBSTACLES</span>
+      <span id="obstacle">0</span>
+    </div>
+  </div>
 <script src="./index.ts"></script>
 </body>
 </html>

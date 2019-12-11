@@ -18,7 +18,7 @@ class Sound {
     this.pitchDetection.getPitch((err: any, frequency: number) => {
       if (err) {
         this.pitchValue = null;
-      } else {
+      } else if (frequency !== null) {
         this.pitchValue = frequency;
       }
       this.updatePitch();

@@ -31,12 +31,17 @@ class GameManager {
   timeCounter = 0;
   obstacleCounter = 0;
   obstacles: Obstacle[] = [];
+  failCallback: () => void = () => {};
 
   constructor() {
     this.writeScore();
     this.writeStage();
     this.writeTargetScore();
     this.writeObstacle();
+  }
+
+  registerFailCallback(cb: () => void) {
+    this.failCallback = cb;
   }
 
   writeScore() {
@@ -80,15 +85,23 @@ class GameManager {
   collide(obstacle: Obstacle) {
     const { holeWidth, holeHeight } = obstacle;
     const { width, height } = this.box;
+    if (width > holeWidth || height > holeHeight) {
+      this.failCallback();
+      return;
+    }
     this.obstacleCounter += 1;
-    this.writeObstacle();
     const scorePercent = (width * height) / (holeWidth * holeHeight);
     this.score += Math.floor(scorePercent * 100);
-    this.writeScore();
     if (this.obstacleCounter % 5 === 0) {
+      if (this.score < this.targetScore) {
+        this.failCallback();
+        return;
+      }
       this.increaseSpeed();
       colorTheme.updateColorTheme();
     }
+    this.writeObstacle();
+    this.writeScore();
   }
 
   increaseSpeed() {
@@ -112,6 +125,19 @@ class GameManager {
   draw() {
     fill(255);
     this.drawObstacles();
+  }
+
+  reset() {
+    this.score = 0;
+    this.speed = 0;
+    this.targetScore = targetScores[this.speed];
+    this.timeCounter = 0;
+    this.obstacleCounter = 0;
+    this.obstacles = [];
+    this.writeScore();
+    this.writeStage();
+    this.writeTargetScore();
+    this.writeObstacle();
   }
 }
 

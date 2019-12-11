@@ -5,6 +5,8 @@ import soundBox from './SoundBox';
 import track from './Track';
 import gameManager from './GameManager';
 
+declare function loadSound(path: string): p5.SoundFile;
+
 enum State {
   Start,
   Game,
@@ -13,9 +15,15 @@ enum State {
 
 let state = State.Start;
 let robotoFont: p5.Font;
+let confirmSound: p5.SoundFile;
+let successSound: p5.SoundFile;
+let failSound: p5.SoundFile;
 
 function preload() {
   robotoFont = loadFont('assets/Roboto-Regular.ttf');
+  confirmSound = loadSound('assets/confirm.wav');
+  successSound = loadSound('assets/success.wav');
+  failSound = loadSound('assets/fail.wav');
 }
 
 function setup() {
@@ -27,7 +35,9 @@ function setup() {
   gameManager.registerFailCallback(() => {
     state = State.End;
     camera(0, 0, (height / 2) / tan(PI * 30 / 180), 0, 0, 0, 0, 1, 0);
+    failSound.play();
   });
+  gameManager.registerSuccessSound(successSound);
 }
 
 function draw() {
@@ -81,9 +91,11 @@ function keyReleased() {
   if (keyCode === 32) {
     if (state === State.Start) {
       state = State.Game;
+      confirmSound.play();
     } else if (state === State.End) {
       gameManager.reset();
       state = State.Start;
+      confirmSound.play();
     }
   }
 }

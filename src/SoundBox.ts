@@ -8,10 +8,8 @@ class SoundBox {
   private length = 100;
 
   setSize(widthIndex: number, heightIndex: number) {
-    const expectedWidth = trackWidth * widthIndex;
-    const expectedHeight = trackHeight * heightIndex;
-    const nextWidth = lerp(this.width, expectedWidth, 0.5);
-    const nextHeight = lerp(this.width, expectedHeight, 0.5);
+    const nextWidth = trackWidth * widthIndex;
+    const nextHeight = trackHeight * heightIndex;
     this.width = nextWidth > 100 ? nextWidth : 100;
     this.height = nextHeight > 100 ? nextHeight : 100;
   }

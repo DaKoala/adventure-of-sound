@@ -31,6 +31,7 @@ class GameManager {
   timeCounter = 0;
   obstacleCounter = 0;
   obstacles: Obstacle[] = [];
+  successSound: p5.SoundFile;
   failCallback: () => void = () => {};
 
   constructor() {
@@ -38,6 +39,10 @@ class GameManager {
     this.writeStage();
     this.writeTargetScore();
     this.writeObstacle();
+  }
+
+  registerSuccessSound(sound: p5.SoundFile) {
+    this.successSound = sound;
   }
 
   registerFailCallback(cb: () => void) {
@@ -100,6 +105,7 @@ class GameManager {
       this.increaseSpeed();
       colorTheme.updateColorTheme();
     }
+    this.successSound.play();
     this.writeObstacle();
     this.writeScore();
   }

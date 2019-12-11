@@ -36,14 +36,14 @@ class Sound {
   }
 
   getVolume() {
-    return this.audioIn.getLevel();
+    return constrain(this.audioIn.getLevel() * 2, 0, 1);
   }
 
   getPitch() {
     if (!this.modelReady || !this.pitchValue) {
       return null;
     }
-    return map(this.pitchValue, 0, 512, 0, 1);
+    return constrain(map(this.pitchValue, 0, 512, 0, 1), 0, 1);
   }
 }
 

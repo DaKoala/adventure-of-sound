@@ -1,5 +1,7 @@
 import { startPoint, trackLength, trackWidth, trackHeight } from './constants';
 import { tempTranslate } from './utils'
+import gameManager from './GameManager';
+import colorTheme from './ColorTheme';
 
 const columnDepth = 1;
 
@@ -28,6 +30,7 @@ export default class Obstacle {
     tempTranslate(() => {
       // left column
       noStroke();
+      fill(colorTheme.getColor().obstacleColor);
       tempTranslate(
         () => {
           box(columnWidth, columnDepth, columnHeight);

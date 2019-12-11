@@ -1,4 +1,5 @@
 import { trackWidth } from './constants';
+import colorTheme from './ColorTheme';
 
 class Track {
   width: number;
@@ -8,7 +9,7 @@ class Track {
   }
 
   draw() {
-    fill(0, 255, 0);
+    fill(colorTheme.getColor().trackColor);
     noStroke();
     plane(this.width, 10000);
   }

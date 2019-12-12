@@ -18,7 +18,12 @@
   "devDependencies": {
     "@types/p5": "^0.9.0",
     "parcel": "^1.12.3",
+    "parcel-plugin-static-files-copy": "^2.2.1",
     "ts-loader": "^6.0.4",
     "typescript": "^3.7.2"
+  },
+  "staticFiles": {
+    "staticPath": "public",
+    "watcherGlob": "**"
   }
 }

@@ -96,7 +96,7 @@ class GameManager {
     }
     this.obstacleCounter += 1;
     const scorePercent = (width * height) / (holeWidth * holeHeight);
-    this.score += Math.floor(scorePercent * 100);
+    this.score += scorePercent > 0.1 ? Math.floor(scorePercent * 100) : 0;
     if (this.obstacleCounter % 5 === 0) {
       if (this.score < this.targetScore) {
         this.failCallback();

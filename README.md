@@ -9,23 +9,23 @@ Before start, make sure you have [Node.js](https://nodejs.org/en/) installed. I 
 ```bash
 git clone https://github.com/DaKoala/adventure-of-sound.git
 cd adventure-of-sound
-npm install
+yarn
 ```
 
 ### Locally develop with Hot Module Reload
 
 ```bash
-npm start
+yarn
 ```
 
 ### Build for production
 
 ```bash
-npm run build
+yarn build
 ```
 
 ### Clean up dependencies
 
 ```bash
-npm run clean
+yarn clean
 ```

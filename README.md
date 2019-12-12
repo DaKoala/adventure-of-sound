@@ -15,7 +15,7 @@ yarn
 ### Locally develop with Hot Module Reload
 
 ```bash
-yarn
+yarn start
 ```
 
 ### Build for production
@@ -29,3 +29,7 @@ yarn build
 ```bash
 yarn clean
 ```
+
+## License
+
+[GPL-3.0](https://github.com/DaKoala/adventure-of-sound/blob/master/LICENSE)

@@ -57,19 +57,14 @@ function draw() {
     fill(255);
     text('Use sound to control the size of the box. Try your best to fit obstacles.', 0, -100);
     fill(59, 178, 115);
-    text('Volume test', -260, -30);
-    text('Pitch test', -270, 30);
-    noFill();
-    stroke(59, 178, 115);
-    rect(-180, -38, 500, 20);
-    rect(-180, 22, 500, 20);
-    noStroke();
-    fill(59, 178, 115);
-    rect(-180, -38, 500 * volume, 20);
-    rect(-180, 22, 500 * pitch, 20);
+    text('Volume relates to width; box relates to height. Just like the rectangle here.', 0, -30);
+    rectMode(CENTER);
+    const testWidth = max(100 * volume, 25);
+    const testHeight = max(100 * pitch, 25);
+    rect(0, 100, testWidth, testHeight);
     textSize(32);
     fill(255);
-    text('Press space to start', 0, 200);
+    text('When you are ready, press space to start', 0, 200);
   } else if (state === State.Game) {
     camera(0, height * 2, height, 0, 0, 0, 0, 1, 0);
     soundBox.setSize(volume, pitch);

@@ -1,6 +1,5 @@
 import { startPoint, trackLength, trackWidth, trackHeight } from './constants';
 import { tempTranslate } from './utils'
-import gameManager from './GameManager';
 import colorTheme from './ColorTheme';
 
 const columnDepth = 1;
